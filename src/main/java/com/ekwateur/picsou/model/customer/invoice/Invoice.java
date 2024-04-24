@@ -36,7 +36,7 @@ public class Invoice {
     }
 
     public BigDecimal computeElectricityBill() {
-        electricityBill = BigDecimal.valueOf(gasConsumptionKWH).multiply(electricityPrice);
+        electricityBill = BigDecimal.valueOf(electricityConsumptionKWH).multiply(electricityPrice);
         return electricityBill;
     }
 }
