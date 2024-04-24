@@ -15,7 +15,7 @@ public class ProfessionalCustomer extends Customer {
     String businessName;
     BigInteger revenues;
 
-    boolean isRevenuesOverThreshold(BigInteger threshold) {
+    public boolean isRevenuesOverThreshold(BigInteger threshold) {
         return revenues.compareTo(threshold) > 0;
     }
 }
