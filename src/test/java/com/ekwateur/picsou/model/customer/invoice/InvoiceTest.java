@@ -1,5 +1,6 @@
 package com.ekwateur.picsou.model.customer.invoice;
 
+import com.ekwateur.picsou.model.invoice.invoice.Invoice;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.ekwateur.picsou.model.customer.invoice;
+package com.ekwateur.picsou.model.invoice.invoice;
 
 
 import lombok.Builder;
