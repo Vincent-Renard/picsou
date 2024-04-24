@@ -1,4 +1,4 @@
-package com.ekwateur.picsou.pricing;
+package com.ekwateur.picsou.pricing.pro;
 
 import com.ekwateur.picsou.model.customer.Customer;
 import com.ekwateur.picsou.model.customer.ProfessionalCustomer;

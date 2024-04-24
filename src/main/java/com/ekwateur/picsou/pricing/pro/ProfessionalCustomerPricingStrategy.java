@@ -1,6 +1,7 @@
-package com.ekwateur.picsou.pricing;
+package com.ekwateur.picsou.pricing.pro;
 
 import com.ekwateur.picsou.model.pricing.PricingPolicy;
+import com.ekwateur.picsou.pricing.CustomerPricingStrategy;
 import lombok.Getter;
 
 import java.math.BigInteger;
