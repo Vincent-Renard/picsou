@@ -2,6 +2,8 @@ package com.ekwateur.picsou.model.invoice;
 
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -10,6 +12,8 @@ import java.math.BigDecimal;
  * Represents an energy customer bill
  */
 @Builder(builderMethodName = "with")
+@Getter
+@Setter
 public class Invoice {
 
     String customerRef;

@@ -5,6 +5,7 @@ import com.ekwateur.picsou.external.consumption.gas.GasConsumptionComputer;
 import com.ekwateur.picsou.model.customer.Customer;
 import com.ekwateur.picsou.model.invoice.Invoice;
 import com.ekwateur.picsou.pricing.CustomerPricingStrategy;
+import com.ekwateur.picsou.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.plugin.core.PluginRegistry;
 import org.springframework.plugin.core.config.EnablePluginRegistries;
@@ -19,8 +20,11 @@ public class BillingServiceImpl implements BillingService {
     private final GasConsumptionComputer gasConsumptionComputer;
     private final PluginRegistry<CustomerPricingStrategy, Customer> pricingStrategies;
 
+    private final CustomerRepository customerRepository;
+
     @Override
-    public Invoice generateBill(String month, Customer customer) {
+    public Invoice generateBill(String month, String customerRef) {
+        var customer = customerRepository.findById(customerRef).orElseThrow();
         var pricingPolicy = pricingStrategies.getRequiredPluginFor(customer).getPricingPolicy();
         var invoiceBuilder = Invoice.with().customerRef(customer.getCustomerRef()).month(month);
         if (customer.hasGasContract()) {
@@ -34,6 +38,8 @@ public class BillingServiceImpl implements BillingService {
                     .electricityConsumptionKWH(electricityConsumptionComputer.computeElectricityUsedKWH(month, customer.getCustomerRef()));
         }
 
-        return invoiceBuilder.build();
+        var invoice = invoiceBuilder.build();
+        invoice.computeTotal();
+        return invoice;
     }
 }
