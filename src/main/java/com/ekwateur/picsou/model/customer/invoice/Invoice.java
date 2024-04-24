@@ -15,8 +15,8 @@ public class Invoice {
     String customerRef;
     String month;
 
-    double electricityConsumption;
-    double gasConsumption;
+    double electricityConsumptionKWH;
+    double gasConsumptionKWH;
 
     @Builder.Default
     BigDecimal gasPrice = BigDecimal.ZERO;
@@ -31,12 +31,12 @@ public class Invoice {
     }
 
     public BigDecimal computeGasBill() {
-        gasBill = BigDecimal.valueOf(gasConsumption).multiply(gasPrice);
+        gasBill = BigDecimal.valueOf(gasConsumptionKWH).multiply(gasPrice);
         return gasBill;
     }
 
     public BigDecimal computeElectricityBill() {
-        electricityBill = BigDecimal.valueOf(electricityConsumption).multiply(electricityPrice);
+        electricityBill = BigDecimal.valueOf(gasConsumptionKWH).multiply(electricityPrice);
         return electricityBill;
     }
 }
