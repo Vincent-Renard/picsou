@@ -1,13 +1,13 @@
 package com.ekwateur.picsou.model.customer.invoice;
 
-import com.ekwateur.picsou.model.invoice.Invoice;
+import com.ekwateur.picsou.model.invoice.Bill;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 
-class InvoiceTest {
+class BillTest {
 
     private static final double ELECTRICITY_CONSUMPTION_KWH = 390.0;
     private static final double GAS_CONSUMPTION_KWH = 958.0;
@@ -17,7 +17,7 @@ class InvoiceTest {
     @Test
     void totalComputing() {
 
-        var invoice = Invoice.with().customerRef("TEK123456789")
+        var invoice = Bill.with().customerRef("TEK123456789")
                 .electricityConsumptionKWH(ELECTRICITY_CONSUMPTION_KWH)
                 .gasConsumptionKWH(GAS_CONSUMPTION_KWH).gasPrice(GAS_PRICE_PER_KWH).electricityPrice(ELECTRICITY_PRICE_PER_KWH).build();
 
@@ -37,7 +37,7 @@ class InvoiceTest {
 
         final var elecPrice = BigDecimal.valueOf(0.123);
         final var gasPrice = BigDecimal.valueOf(0.987);
-        var invoice = Invoice.with().customerRef("TEK123456789")
+        var invoice = Bill.with().customerRef("TEK123456789")
                 .electricityConsumptionKWH(elecConsumption)
                 .gasConsumptionKWH(gasConsumption).gasPrice(gasPrice).electricityPrice(elecPrice).build();
 
@@ -52,7 +52,7 @@ class InvoiceTest {
     void electricityInvoiceComputing() {
 
 
-        var invoice = Invoice.with().customerRef("TEK123456789")
+        var invoice = Bill.with().customerRef("TEK123456789")
                 .electricityConsumptionKWH(ELECTRICITY_CONSUMPTION_KWH).electricityPrice(ELECTRICITY_PRICE_PER_KWH).build();
 
         Assertions.assertThat(invoice.computeElectricityBill())
@@ -66,7 +66,7 @@ class InvoiceTest {
     @Test
     void gasInvoiceComputing() {
 
-        var invoice = Invoice.with().customerRef("TEK123456789")
+        var invoice = Bill.with().customerRef("TEK123456789")
                 .gasConsumptionKWH(GAS_CONSUMPTION_KWH).gasPrice(GAS_PRICE_PER_KWH).build();
 
         Assertions.assertThat(invoice.computeGasBill())

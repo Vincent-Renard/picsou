@@ -3,7 +3,7 @@ package com.ekwateur.picsou.services;
 import com.ekwateur.picsou.external.consumption.electricity.ElectricityConsumptionComputer;
 import com.ekwateur.picsou.external.consumption.gas.GasConsumptionComputer;
 import com.ekwateur.picsou.model.customer.Customer;
-import com.ekwateur.picsou.model.invoice.Invoice;
+import com.ekwateur.picsou.model.invoice.Bill;
 import com.ekwateur.picsou.pricing.CustomerPricingStrategy;
 import com.ekwateur.picsou.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +23,10 @@ public class BillingServiceImpl implements BillingService {
     private final CustomerRepository customerRepository;
 
     @Override
-    public Invoice generateBill(String month, String customerRef) {
+    public Bill generateBill(String month, String customerRef) {
         var customer = customerRepository.findById(customerRef).orElseThrow();
         var pricingPolicy = pricingStrategies.getRequiredPluginFor(customer).getPricingPolicy();
-        var invoiceBuilder = Invoice.with().customerRef(customer.getCustomerRef()).month(month);
+        var invoiceBuilder = Bill.with().customerRef(customer.getCustomerRef()).month(month);
         if (customer.hasGasContract()) {
             invoiceBuilder
                     .gasPrice(pricingPolicy.gasPrice())

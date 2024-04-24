@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @Builder(builderMethodName = "with")
 @Getter
 @Setter
-public class Invoice {
+public class Bill {
 
     String customerRef;
     String month;
@@ -27,7 +27,7 @@ public class Invoice {
     @Builder.Default
     BigDecimal electricityPrice = BigDecimal.ZERO;
 
-    BigDecimal gasBill, electricityBill, total;
+    BigDecimal gasSubBill, electricitySubBill, total;
 
     public BigDecimal computeTotal() {
         total = computeGasBill().add(computeElectricityBill());
@@ -35,12 +35,12 @@ public class Invoice {
     }
 
     public BigDecimal computeGasBill() {
-        gasBill = BigDecimal.valueOf(gasConsumptionKWH).multiply(gasPrice);
-        return gasBill;
+        gasSubBill = BigDecimal.valueOf(gasConsumptionKWH).multiply(gasPrice);
+        return gasSubBill;
     }
 
     public BigDecimal computeElectricityBill() {
-        electricityBill = BigDecimal.valueOf(electricityConsumptionKWH).multiply(electricityPrice);
-        return electricityBill;
+        electricitySubBill = BigDecimal.valueOf(electricityConsumptionKWH).multiply(electricityPrice);
+        return electricitySubBill;
     }
 }

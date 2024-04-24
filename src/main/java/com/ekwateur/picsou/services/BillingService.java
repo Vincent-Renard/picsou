@@ -1,6 +1,6 @@
 package com.ekwateur.picsou.services;
 
-import com.ekwateur.picsou.model.invoice.Invoice;
+import com.ekwateur.picsou.model.invoice.Bill;
 
 public interface BillingService {
 
@@ -11,5 +11,5 @@ public interface BillingService {
      * @param customerRef the customerRef
      * @return An invoice with energy consumption, prices, sub-bill per energy and sum
      */
-    Invoice generateBill(String month, String customerRef);
+    Bill generateBill(String month, String customerRef);
 }
