@@ -14,14 +14,14 @@ un mois calendaire.
 
 Ce programme devra gérer 2 types de clients :
 
-A) Les clients Pro, qui ont les propriétés suivantes :
+A) Les clients Pro, qui ont les propriétés suivantes : -> ProfessionalCustomer
 
 * Reference Client (EKW + 9 caractères numériques)
 * N° SIRET
 * Raison Sociale
 * CA
 
-B) Les particuliers, qui ont les propriétés suivantes :
+B) Les particuliers, qui ont les propriétés suivantes : IndividualCustomer
 
 * Reference Client (EKW + 9 caractères numériques)
 * Civilité
@@ -35,20 +35,21 @@ Un client peut consommer deux types d'énergies :
 
 Chaque énergie est facturée au kWh.
 
-* Pour les particuliers:
+* Pour les particuliers: IndividualPricingStrategy
     * le prix du kWh est de 0,133 € pour l'électricité et
     * 0,108€ pour le gaz
 * Pour les pro:
-    * ayant un CA supérieur à 1 000 000 €:
+    * ayant un CA supérieur à 1 000 000 €: BigProPricingStategy
         * Le prix du kWh est de 0,110 € pour l'électricité
         * 0,123€ pour le gaz
-    * CA inférieur à 1 000 000 €,
+    * CA inférieur à 1 000 000 €, ModestProPricingStategy
         * le prix du kWh est de 0,112 € pour l'électricité
         * 0,117€ pour le gaz
 
 ## Contraintes techniques
 
 La seule contrainte technique est l'utilisation du langage Java dans sa version 8 au minimum.
+Java version 21
 
 ## Ce qui est attendu
 
