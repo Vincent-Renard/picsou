@@ -1,4 +1,4 @@
-package com.ekwateur.Picsou;
+package com.ekwateur.picsou;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

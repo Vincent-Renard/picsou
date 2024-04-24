@@ -9,12 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ekwateur</groupId>
-	<artifactId>Picsou</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>picsou</artifactId>
+	<version>0.0.1</version>
 	<name>Picsou</name>
 	<description>Ekwateur tech test</description>
 	<properties>
 		<java.version>21</java.version>
+		<lombok.version>1.18.32</lombok.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,6 +26,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
